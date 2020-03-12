@@ -1,0 +1,42 @@
+---
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerNodePool
+metadata:
+  annotations:
+    cnrm.cloud.google.com/project-id: nanyu-gke-dev
+  name: default-pool
+spec:
+  clusterRef:
+    external: nan-cluster
+  initialNodeCount: 3
+  location: us-central1-a
+  management:
+    autoRepair: true
+    autoUpgrade: true
+  maxPodsPerNode: 110
+  nodeConfig:
+    diskSizeGb: 100
+    diskType: pd-standard
+    imageType: COS
+    machineType: n1-standard-1
+    metadata:
+      disable-legacy-endpoints: "true"
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    serviceAccountRef:
+      external: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+  nodeCount: 3
+  nodeLocations:
+  - us-central1-a
+  version: 1.14.10-gke.17
+status:
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/v1/projects/nanyu-gke-dev/zones/us-central1-a/instanceGroupManagers/gke-nan-cluster-default-pool-3b5b1cd5-grp
+...
