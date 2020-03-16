@@ -1,4 +1,3 @@
----
 apiVersion: container.cnrm.cloud.google.com/v1beta1
 kind: ContainerCluster
 metadata:
@@ -67,4 +66,3 @@ status:
   - https://www.googleapis.com/compute/beta/projects/nanyu-gke-dev/zones/us-central1-a/instanceGroups/gke-nan-cluster-default-pool-3b5b1cd5-grp
   masterVersion: 1.14.10-gke.17
   servicesIpv4Cidr: 10.0.0.0/20
-...

@@ -1,0 +1,11 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+    name: asm
+upstream:
+    type: git
+    git:
+        commit: 3de3c800749889ac2dedd2e8cef2305658b02934
+        repo: https://github.com/nan-yu/asm-on-existing-cluster
+        directory: asm
+        ref: master
