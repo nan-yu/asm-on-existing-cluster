@@ -16,6 +16,7 @@ apiVersion: install.istio.io/v1alpha2
 kind: IstioControlPlane
 metadata:
   clusterName: "nanyu-gke-dev/us-central1-a/nan-cluster" # {"type":"string","x-kustomize":{"partialSetters":[{"name":"gcloud.core.project","value":"nanyu-gke-dev"},{"name":"cluster-name","value":"nan-cluster"},{"name":"gcloud.compute.zone","value":"us-central1-a"}]}}
+  name: default-istio-control-plane
 spec:
   profile: asm
   hub: gcr.io/gke-release/asm
