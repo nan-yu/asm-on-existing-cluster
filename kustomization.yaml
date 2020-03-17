@@ -9,3 +9,8 @@ resources:
 - asm/namespace.yaml
 - asm/istio-operator.yaml
 - asm/enable-services.yaml
+
+patchesStrategicMerge:
+- asm/patch/cluster-patch.yaml
+- asm/patch/nodepool-patch.yaml
+

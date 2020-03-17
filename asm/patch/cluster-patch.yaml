@@ -1,0 +1,15 @@
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  annotations:
+    cnrm.cloud.google.com/project-id: nanyu-gke-dev
+    cnrm.cloud.google.com/remove-default-node-pool: <nil>
+  name: nan-cluster
+  namespace: default
+spec:
+  ipAllocationPolicy:
+    useIpAliases: true
+  workloadIdentity:
+    identityNamespace: default
+  labels:
+    mesh_id: nanyu-gke-dev_us-central1-a_nan-cluster
