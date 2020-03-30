@@ -1,0 +1,213 @@
+apiVersion: cnrm.cloud.google.com/v1alpha1
+kind: CloudService
+metadata:
+  name: anthos
+  namespace: nanyu-gke-dev
+spec:
+  service: anthos.googleapis.com
+---
+apiVersion: cnrm.cloud.google.com/v1alpha1
+kind: CloudService
+metadata:
+  name: compute
+  namespace: nanyu-gke-dev
+spec:
+  service: compute.googleapis.com
+---
+apiVersion: cnrm.cloud.google.com/v1alpha1
+kind: CloudService
+metadata:
+  name: gke
+  namespace: nanyu-gke-dev
+spec:
+  service: container.googleapis.com
+---
+apiVersion: cnrm.cloud.google.com/v1alpha1
+kind: CloudService
+metadata:
+  name: iamcredentials
+  namespace: nanyu-gke-dev
+spec:
+  service: iamcredentials.googleapis.com
+---
+apiVersion: cnrm.cloud.google.com/v1alpha1
+kind: CloudService
+metadata:
+  name: meshca
+  namespace: nanyu-gke-dev
+spec:
+  service: meshca.googleapis.com
+---
+apiVersion: cnrm.cloud.google.com/v1alpha1
+kind: CloudService
+metadata:
+  name: meshconfig
+  namespace: nanyu-gke-dev
+spec:
+  service: meshconfig.googleapis.com
+---
+apiVersion: cnrm.cloud.google.com/v1alpha1
+kind: CloudService
+metadata:
+  name: meshtelemetry
+  namespace: nanyu-gke-dev
+spec:
+  service: meshtelemetry.googleapis.com
+---
+apiVersion: cnrm.cloud.google.com/v1alpha1
+kind: CloudService
+metadata:
+  name: stackdriver
+  namespace: nanyu-gke-dev
+spec:
+  service: stackdriver.googleapis.com
+---
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  annotations:
+    cnrm.cloud.google.com/project-id: nanyu-gke-dev
+    cnrm.cloud.google.com/remove-default-node-pool: <nil>
+  name: nan-cluster
+  namespace: nanyu-gke-dev
+spec:
+  addonsConfig:
+    horizontalPodAutoscaling:
+      disabled: false
+    httpLoadBalancing:
+      disabled: false
+    istioConfig:
+      disabled: true
+    networkPolicyConfig:
+      disabled: true
+  clusterAutoscaling:
+    enabled: false
+  clusterIpv4Cidr: 10.44.0.0/14
+  databaseEncryption:
+    state: DECRYPTED
+  defaultMaxPodsPerNode: 110
+  ipAllocationPolicy:
+    clusterIpv4CidrBlock: 10.44.0.0/14
+    clusterSecondaryRangeName: gke-nan-cluster-pods-78b24951
+    servicesIpv4CidrBlock: 10.0.0.0/20
+    servicesSecondaryRangeName: gke-nan-cluster-services-78b24951
+    useIpAliases: true
+  labels:
+    mesh_id: nanyu-gke-dev_us-central1-a_nan-cluster
+  location: us-central1-a
+  loggingService: logging.googleapis.com/kubernetes
+  masterAuth:
+    clientCertificateConfig:
+      issueClientCertificate: false
+    clusterCaCertificate: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURDekNDQWZPZ0F3SUJBZ0lRVXJtWStoNFlLSGFjS3VpSGNGd1piekFOQmdrcWhraUc5dzBCQVFzRkFEQXYKTVMwd0t3WURWUVFERXlRelpqRTFNbVJqT0MxaE5EZ3lMVFEyTkRFdE9HWm1aUzA0TXpRMVpqY3lNVE5sTkdNdwpIaGNOTWpBd016RXhNRFl5TmpBMFdoY05NalV3TXpFd01EY3lOakEwV2pBdk1TMHdLd1lEVlFRREV5UXpaakUxCk1tUmpPQzFoTkRneUxUUTJOREV0T0dabVpTMDRNelExWmpjeU1UTmxOR013Z2dFaU1BMEdDU3FHU0liM0RRRUIKQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUNtWElrWlVxUVJ3VENrZndMZ0laSEI5WGpITkRDS3N5dzI0ZlB4SW5qQgphcDhGcmgwRWpqYTNnKzdOYXovdElxSEpBdmNDM0gzNXA2c2pweUROSkEyN25JNThlT21LMlJoaXdscjRYVDBICnBUTUhRSmFHeUhSckpybll3OC96NTlLalEvL1NVUy8vVXZvTDZ5QmFSNHJNZnVNWk9DZTZJa05rc015UU5RUzkKM2ZKZGt2ZzdocWVwUnpjSnRwaGkxS3U2K2hER2ZXYnByQzEwSTg3T3BKK1E3bmJVb3g1TElHRFoyS20zdWJ4awphdkJIejRhM1VCRVY3UXZRaVgyV2JJS24vUnZjT25uN1Jhcllybkpoa3ZHajVaejdFaU5NQlJmbjlNNG0vMHI4ClZrZkdFR3VrdUZuYy9weW5YRks1cWJzMm9rUGdWbjByRTc0RW82dkMvYldWQWdNQkFBR2pJekFoTUE0R0ExVWQKRHdFQi93UUVBd0lDQkRBUEJnTlZIUk1CQWY4RUJUQURBUUgvTUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFCMgpnQ3ZXTWhoanRmMWFHNXI4MTdDSXBXbFFzZVFvMTNLV0dYdmc5MDBhc1lPdDA5MFZLRW9pZ2xBU21nU2NWRVhxCkpVWEJOT2RTanM5ZFJyb3Q0RVhaVVBNWFBibWtQc1pGbFFmUkYvSWVGbXVKTWplL3libzYxN0VRQThSMVEvNUwKcGlxME8vU2VWOXZRN0luUzFibnE3ak54dG1ld3BiREdNNTRuMGwvcWE0NGFvLzE2SmV0Si82VXdsb01rdk1DWQpXMXJFaWRuMDZPOTFZOFk0RGppa1dxemE1aEc5VHdJelRVODdqOFBBemJ5UVNKejRabEJjNUpWaVBIMU41MCtwCjdJRXR6Sk1say9XMll4QThmL2NmdEFSVUt2K0NpZmsvMHdRVnZFRDE5dzc0R3N6NTVKYlVqVFdXejlzNjFwZGoKZHhHQWJrU09TVmNMVEgwazBESEUKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  monitoringService: monitoring.googleapis.com/kubernetes
+  networkPolicy:
+    enabled: false
+  networkRef:
+    external: projects/nanyu-gke-dev/global/networks/default
+  nodeConfig:
+    diskSizeGb: 100
+    diskType: pd-standard
+    imageType: COS
+    machineType: n1-standard-1
+    metadata:
+      disable-legacy-endpoints: "true"
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/trace.append
+    serviceAccountRef:
+      external: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+  nodeVersion: 1.14.10-gke.17
+  releaseChannel:
+    channel: UNSPECIFIED
+  subnetworkRef:
+    external: projects/nanyu-gke-dev/regions/us-central1/subnetworks/default
+  workloadIdentity:
+    identityNamespace: default
+status:
+  endpoint: 35.238.9.169
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/beta/projects/nanyu-gke-dev/zones/us-central1-a/instanceGroups/gke-nan-cluster-default-pool-3b5b1cd5-grp
+  masterVersion: 1.14.10-gke.17
+  servicesIpv4Cidr: 10.0.0.0/20
+---
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerNodePool
+metadata:
+  annotations:
+    cnrm.cloud.google.com/project-id: nanyu-gke-dev
+  name: default-pool
+  namespace: nanyu-gke-dev
+spec:
+  clusterRef:
+    external: nan-cluster
+    name: nan-cluster
+  initialNodeCount: 3
+  location: us-central1-a
+  management:
+    autoRepair: true
+    autoUpgrade: true
+  maxPodsPerNode: 110
+  nodeConfig:
+    diskSizeGb: 100
+    diskType: pd-standard
+    imageType: COS
+    machineType: n1-standard-1
+    metadata:
+      disable-legacy-endpoints: "true"
+    oauthScopes:
+    - https://www.googleapis.com/auth/devstorage.read_only
+    - https://www.googleapis.com/auth/logging.write
+    - https://www.googleapis.com/auth/monitoring
+    - https://www.googleapis.com/auth/servicecontrol
+    - https://www.googleapis.com/auth/service.management.readonly
+    - https://www.googleapis.com/auth/trace.append
+    serviceAccountRef:
+      external: default
+    shieldedInstanceConfig:
+      enableIntegrityMonitoring: true
+    workloadMetadataConfig:
+      nodeMetadata: GKE_METADATA_SERVER
+  nodeCount: 3
+  nodeLocations:
+  - us-central1-a
+  version: 1.14.10-gke.17
+status:
+  instanceGroupUrls:
+  - https://www.googleapis.com/compute/v1/projects/nanyu-gke-dev/zones/us-central1-a/instanceGroupManagers/gke-nan-cluster-default-pool-3b5b1cd5-grp
+---
+apiVersion: identity.cnrm.cloud.google.com/v1alpha2
+kind: IdentityNamespace
+metadata:
+  name: default
+  namespace: nanyu-gke-dev
+spec: {}
+---
+apiVersion: install.istio.io/v1alpha2
+kind: IstioControlPlane
+metadata:
+  clusterName: nanyu-gke-dev/us-central1-a/nan-cluster
+  name: default-istio-control-plane
+spec:
+  hub: gcr.io/gke-release/asm
+  profile: asm
+  tag: 1.4.6-asm.0
+  values:
+    global:
+      meshID: nanyu-gke-dev_us-central1-a_nan-cluster
+      proxy:
+        env:
+          GCP_METADATA: nanyu-gke-dev|877381117738|nan-cluster|us-central1-a
+      sds:
+        token:
+          aud: nanyu-gke-dev.svc.id.goog
+      trustDomain: nanyu-gke-dev.svc.id.goog
+    nodeagent:
+      env:
+        GKE_CLUSTER_URL: https://container.googleapis.com/v1/projects/nanyu-gke-dev/locations/us-central1-a/clusters/nan-cluster

@@ -1,2 +1,5 @@
 kustomize:
-	kustomize build . > all.yaml
+	kustomize build . > test/all.yaml
+
+deploy:
+	kustomize build . | anthoscli apply -f
