@@ -4,7 +4,6 @@ metadata:
   annotations:
     cnrm.cloud.google.com/project-id: nanyu-gke-dev
   name: nan-cluster
-  namespace: nan-gke-dev
 spec:
   ipAllocationPolicy:
     useIpAliases: true

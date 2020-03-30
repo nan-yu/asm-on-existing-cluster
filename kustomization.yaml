@@ -10,6 +10,8 @@ resources:
 - asm/istio-operator.yaml
 - asm/enable-services.yaml
 
+namespace: nanyu-gke-dev
+
 patchesStrategicMerge:
 - asm/patch/cluster-patch.yaml
 - asm/patch/nodepool-patch.yaml

@@ -194,6 +194,7 @@ kind: IstioControlPlane
 metadata:
   clusterName: nanyu-gke-dev/us-central1-a/nan-cluster
   name: default-istio-control-plane
+  namespace: nanyu-gke-dev
 spec:
   hub: gcr.io/gke-release/asm
   profile: asm
